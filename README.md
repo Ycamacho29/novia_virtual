@@ -19,8 +19,12 @@ _Instrucciones para obtener una copia del proyecto en tu máquina local para pro
 
 ### Instalación
 
-1. Clona el repositorio:
-   git clone https://github.com/tu_usuario/tu_repositorio.git
+1. Clona el repositorio: git clone https://github.com/tu_usuario/tu_repositorio.git
 
-2. Instala node.js
-3. En la carpeta del proyecto instala todas las dependencias
+2. Instala node.js: https://nodejs.org/en
+3. En la carpeta del proyecto abre la terminal y ejecuta los siguientes comandos
+para instalar todas las dependencias:
+   npm install telegraf
+   npm install axios
+   npm install dotenv
+   npm install elevenlabs
