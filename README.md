@@ -38,7 +38,7 @@ para instalar todas las dependencias:
 4. Crea el Bot de Telegram utilizando [BotFather](https://t.me/BotFather)  
 5. Crear una cuenta en [VoiceFlow](https://www.voiceflow.com/)
 6. Crear una cuenta en [ElevenLabs](https://elevenlabs.io/)
-7. En la raiz del proyecto crea una archivo .env y coloca los siguientes valores:
+7. En la raiz del proyecto crea una archivo **.env** y coloca los siguientes valores:
 ~~~
 # CONECCION CON BOT DE TELEGRAM
 BOT_TOKEN=<TOKEN_DE_TU_BOT_DE_TELEGRAM>
