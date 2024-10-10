@@ -1,0 +1,22 @@
+{
+  "name": "bot_novia_virtual",
+  "version": "1.0.0",
+  "description": "Integracion de mi agente de voiceflow, pagos y audio(Make) con mi bot de telegram para el proyecto de novia virtual.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Yorwin Camacho",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.7.7",
+    "dotenv": "^16.4.5",
+    "elevenlabs": "^0.16.0",
+    "pg": "^8.12.0",
+    "stripe": "^17.1.0",
+    "telegraf": "^4.16.3"
+  },
+  "devDependencies": {
+    "@types/dotenv": "^6.1.1"
+  }
+}
