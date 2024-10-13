@@ -9,7 +9,8 @@ const bd = require('./src/metricas');
 
 const bot = new Telegraf(process.env.BOT_TOKEN)
 
-let temporizador = new Temporizador(); // Crear una nueva instancia del temporizador
+let temporizadores = {}; // Objeto para almacenar temporizadores por usuario
+// let temporizador = new Temporizador(); // Crear una nueva instancia del temporizador
 let pago;
 
 bot.start(async (ctx) => {
@@ -40,8 +41,8 @@ bot.on('callback_query', async (ctx) => {
             ctx.reply('¿Cuántos minutos deseas comprar?🛒');
             break;
         case 'ver_minutos':
-            if (temporizador.estaActivo()) {
-                await ctx.reply(temporizador.tiempoRestanteFormateado());
+            if (temporizadores[ctx.chat.id].estaActivo()) {
+                await ctx.reply(temporizadores[ctx.chat.id].tiempoRestanteFormateado());
             } else {
                 await ctx.reply('Aun no has comprado minutos de conversacion.');
             }
@@ -56,8 +57,8 @@ bot.on('callback_query', async (ctx) => {
 
 // Escuchar la respuesta del usuario
 bot.on('text', async (ctx) => {
-    if (temporizador.estaActivo()) {
-        if (temporizador && temporizador.estaActivo()) { // Solo procesar si el temporizador está activo
+    if (temporizadores[ctx.chat.id].estaActivo()) {
+        if (temporizadores && temporizadores[ctx.chat.id].estaActivo()) { // Solo procesar si el temporizadores está activo
             let chatID = ctx.message.chat.id;
             await interact.interact(ctx, chatID, {
                 type: "text",
@@ -103,7 +104,8 @@ bot.on('text', async (ctx) => {
         if (pago.validarPago(resp.id)) {
             // Iniciar el temporizador con los minutos comprados
             console.log(resp.id);
-            temporizador.iniciar(minutos); // Iniciar el temporizador con los minutos comprados
+            temporizadores[ctx.chat.id] = new Temporizador(); // Crear una nueva instancia del temporizador
+            temporizadores[ctx.chat.id].iniciar(minutos); // Iniciar el temporizador con los minutos comprados
         } else {
             await ctx.reply('Error al Validar el pago.');
         }
