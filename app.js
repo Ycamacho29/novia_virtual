@@ -14,6 +14,7 @@ let temporizadores = {}; // Objeto para almacenar temporizadores por usuario
 let pago;
 
 bot.start(async (ctx) => {
+    temporizadores[ctx.chat.id] = new Temporizador(); // Crear una nueva instancia del temporizador
     await ctx.reply('¡Hola! 😊 Bienvenido amor, aquí tienes los comandos que puedes ejecutar:', {
         reply_markup: {
             inline_keyboard: [
@@ -104,7 +105,6 @@ bot.on('text', async (ctx) => {
         if (pago.validarPago(resp.id)) {
             // Iniciar el temporizador con los minutos comprados
             console.log(resp.id);
-            temporizadores[ctx.chat.id] = new Temporizador(); // Crear una nueva instancia del temporizador
             temporizadores[ctx.chat.id].iniciar(minutos); // Iniciar el temporizador con los minutos comprados
         } else {
             await ctx.reply('Error al Validar el pago.');
